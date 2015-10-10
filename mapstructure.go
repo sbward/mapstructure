@@ -612,7 +612,7 @@ func (d *Decoder) decodeStruct(name string, data interface{}, val reflect.Value)
 
 			if fieldType.Anonymous {
 				fieldKind := fieldType.Type.Kind()
-				if fieldKind != reflect.Struct {
+				if fieldKind != reflect.Struct && fieldKind != reflect.Interface {
 					errors = appendErrors(errors,
 						fmt.Errorf("%s: unsupported type: %s", fieldType.Name, fieldKind))
 					continue
